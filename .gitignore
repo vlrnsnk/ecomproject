@@ -1,0 +1,8 @@
+# Ignore VSCode settings
+.vscode/
+
+# Ignore IntelliJ IDEA
+.idea/
+
+# Ignore macOS system files
+.DS_Store
