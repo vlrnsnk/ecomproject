@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
         <h1>E-Commerce App</h1>
         <p>Shop with ease!</p>
       </header>
-      <div className="flex justify-between">
+      <div className="flex justify-center">
         <Button>Login</Button>
         <Button>Register</Button>
       </div>
