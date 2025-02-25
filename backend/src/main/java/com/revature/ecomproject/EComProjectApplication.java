@@ -8,6 +8,8 @@ public class EComProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EComProjectApplication.class, args);
+
+		System.out.println("E-Commerce Project Started");
 	}
 
 }
