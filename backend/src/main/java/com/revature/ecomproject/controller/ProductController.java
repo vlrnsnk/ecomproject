@@ -52,6 +52,8 @@ public ResponseEntity<String> getProductById(@PathVariable int productId){
   }*/
   return ResponseEntity.status(HttpStatus.OK).body("product no found.");
 }
+
+//await for category entity to complete this endpoint
 @GetMapping("/categoryId")
   public ResponseEntity<List<String>> getAllProductByCategoryHandler(@PathVariable int categoryId){
     List<String> emptyProductByCategory=new ArrayList<>();
