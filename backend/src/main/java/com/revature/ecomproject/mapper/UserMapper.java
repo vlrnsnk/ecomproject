@@ -5,6 +5,10 @@ import com.revature.ecomproject.dto.UserResponseDTO;
 import com.revature.ecomproject.model.User;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Component
 public class UserMapper {
 
@@ -43,6 +47,26 @@ public class UserMapper {
         userResponseDTO.setUpdatedAt(user.getUpdatedAt());
 
         return userResponseDTO;
+    }
+
+    /**
+     * Converts a list of User objects to a list of UserResponseDTO objects.
+     * @param users List of User objects
+     * @return List of UserResponseDTO objects
+     */
+    public static List<UserResponseDTO> toUserResponseDTOList(List<User> users) {
+        return users.stream()
+            .map(UserMapper::toUserResponseDTO)
+            .toList();
+    }
+
+    /**
+     * Converts an Optional<User> object to an Optional<UserResponseDTO> object.
+     * @param userOptional Optional<User> object
+     * @return Optional<UserResponseDTO> object
+     */
+    public static Optional<UserResponseDTO> toUserResponseDTOOptional(Optional<User> userOptional) {
+        return userOptional.map(UserMapper::toUserResponseDTO);
     }
 
 }
