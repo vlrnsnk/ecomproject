@@ -15,7 +15,7 @@ public class UserMapper {
      */
     public static User toUser(UserRequestDTO userRequestDTO) {
         User user = new User();
-        
+
         user.setUsername(userRequestDTO.getUsername());
         user.setFirstName(userRequestDTO.getFirstName());
         user.setLastName(userRequestDTO.getLastName());
