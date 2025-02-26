@@ -32,9 +32,7 @@ public class UserController {
      */
     @GetMapping
     public List<UserResponseDTO> getAllUsers() {
-        return userService.getAllUsers().stream()
-            .map(userMapper::toUserResponseDTO)
-            .collect(Collectors.toList());
+        return userMapper.toUserResponseDTOList(userService.getAllUsers());
     }
 
     /**
@@ -44,15 +42,14 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id) {
-        return userService.getUserById(id)
-            .map(userMapper::toUserResponseDTO)
+        return userMapper.toUserResponseDTOOptional(userService.getUserById(id))
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
 
     /**
      * Create user
-     * @param user User object
+     * @param userRequestDTO UserRequestDTO object
      * @return Created user
      */
     @PostMapping
@@ -67,7 +64,7 @@ public class UserController {
     /**
      * Update user
      * @param id User id
-     * @param user User object
+     * @param userRequestDTO UserRequestDTO object
      * @return Updated user
      */
     @PutMapping("/{id}")
@@ -98,8 +95,7 @@ public class UserController {
      */
     @GetMapping("/username/{username}")
     public ResponseEntity<UserResponseDTO> getUserByUsername(@PathVariable String username) {
-        return userService.getUserByUsername(username)
-            .map(userMapper::toUserResponseDTO)
+        return userMapper.toUserResponseDTOOptional(userService.getUserByUsername(username))
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
@@ -111,8 +107,7 @@ public class UserController {
      */
     @GetMapping("/email/{email}")
     public ResponseEntity<UserResponseDTO> getUserByEmail(@PathVariable String email) {
-        return userService.getUserByEmail(email)
-            .map(userMapper::toUserResponseDTO)
+        return userMapper.toUserResponseDTOOptional(userService.getUserByEmail(email))
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
