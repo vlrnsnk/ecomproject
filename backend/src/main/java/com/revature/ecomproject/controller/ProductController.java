@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/v1/products")
 @CrossOrigin(value="http://localhost:5173", allowCredentials = "false")
 public class ProductController {
 
@@ -23,7 +23,7 @@ public ProductController(ProductService productService){
 
 // await for product entity, product DTO, product service
 @PostMapping
-public ResponseEntity<String> addProductHandler(@RequestBody String productToAdd){
+public ResponseEntity<String> addProduct(@RequestBody String productToAdd){
   /*Optional<Product> productCreated=productService.addProduct(productToAdd);
   if (productCreated=.isPresent()){
     return ResponseEntity.status(HttpStatus.CREATED).body(productCreated=.get());
@@ -34,7 +34,7 @@ public ResponseEntity<String> addProductHandler(@RequestBody String productToAdd
 
 // await for productDTO and product service
 @GetMapping
-public ResponseEntity<String> getAllProductsHandler(){
+public ResponseEntity<String> getAllProducts(){
  /* List<ProductDTO> emptyProduct=new ArrayList<>();
   Optional<List<OutGoingProductDTO>> productDTOList=productService.getAllProducts();
   if(productDTOList.isPresent()){
@@ -55,7 +55,7 @@ public ResponseEntity<String> getProductById(@PathVariable int productId){
 
 //await for category entity to complete this endpoint
 @GetMapping("/categoryId")
-  public ResponseEntity<List<String>> getAllProductByCategoryHandler(@PathVariable int categoryId){
+  public ResponseEntity<List<String>> getAllProductByCategory(@PathVariable int categoryId){
     List<String> emptyProductByCategory=new ArrayList<>();
     /*Optional<List<OutGoingProductDTO>> productByCategoryList=productService.getAllProductByCategory(categoryId);
 
